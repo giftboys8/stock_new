@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: stock-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # 挂载数据库文件以持久化数据
+      - ./backend/stock_analysis.db:/app/stock_analysis.db
+      # 挂载日志目录
+      - ./backend/logs:/app/logs
+    environment:
+      - DATABASE_URL=sqlite:///./stock_analysis.db
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - CORS_ORIGINS=*
+    networks:
+      - stock-network
+
+  # 前端服务
+  frontend:
+    build: 
+      context: ./stock-analysis
+      dockerfile: Dockerfile
+    container_name: stock-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
