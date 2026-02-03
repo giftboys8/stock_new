@@ -50,8 +50,23 @@
 
 ## 数据持久化
 
-- **数据库**: `backend/stock_analysis.db` 会被挂载到容器中，保证数据重启不丢失。
-- **日志**: `backend/logs` 目录也会被挂载。
+为避免 macOS 上的 Docker 权限问题，我们使用 **Docker 命名卷 (Named Volumes)** 来持久化数据：
+
+- **数据库卷**: `stock_data` -> 挂载到容器内 `/app/data` (数据库文件路径：`/app/data/stock_analysis.db`)
+- **日志卷**: `stock_logs` -> 挂载到容器内 `/app/logs`
+
+### 管理数据卷
+
+```bash
+# 查看数据卷
+docker volume ls
+
+# 查看数据卷详情 (找到在宿主机上的实际路径)
+docker volume inspect stock_stock_data
+
+# 清理数据卷 (注意：这将删除所有数据！)
+docker volume rm stock_stock_data
+```
 
 ## 故障排查
 

@@ -11,12 +11,12 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # 挂载数据库文件以持久化数据
-      - ./backend/stock_analysis.db:/app/stock_analysis.db
-      # 挂载日志目录
-      - ./backend/logs:/app/logs
+      # 使用命名卷以避免 macOS 目录权限问题
+      - stock_data:/app/data
+      - stock_logs:/app/logs
     environment:
-      - DATABASE_URL=sqlite:///./stock_analysis.db
+      # 将数据库指向数据卷目录
+      - DATABASE_URL=sqlite:////app/data/stock_analysis.db
       - API_HOST=0.0.0.0
       - API_PORT=8000
       - CORS_ORIGINS=*
@@ -40,3 +40,7 @@ services:
 networks:
   stock-network:
     driver: bridge
+
+volumes:
+  stock_data:
+  stock_logs:
