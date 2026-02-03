@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史选股记录 - 股票分析系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="screening.html" class="navbar-logo">
+                📈 股票分析系统
+            </a>
+            <div class="navbar-menu">
+                <a href="screening.html">首页</a>
+                <a href="results.html">选股结果</a>
+                <a href="history.html" class="active">历史记录</a>
+            </div>
+            <div class="navbar-user">
+                <span>欢迎，用户</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 页面标题 -->
+        <div class="card-header">
+            历史选股记录
+        </div>
+
+        <!-- 日期筛选 -->
+        <div class="card">
+            <div class="card-header">
+                📅 日期筛选
+            </div>
+
+            <div class="card-body">
+                <div class="d-flex gap-3 align-center">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">起始日期</label>
+                        <input type="month" class="form-input" value="2026-01" id="startDate">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <label class="form-label">结束日期</label>
+                        <input type="month" class="form-input" value="2026-01" id="endDate">
+                    </div>
+                    <div style="margin-top: 26px;">
+                        <button class="btn btn-primary" onclick="filterHistory()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 历史记录表格 -->
+        <div class="card">
+            <div class="card-header">
+                📊 历史记录（共12次）
+            </div>
+
+            <div class="card-body">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>策略</th>
+                                <th>筛选数量</th>
+                                <th>平均评分</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2026-01-27</td>
+                                <td>策略B（平衡型）</td>
+                                <td>18只</td>
+                                <td><span class="score score-good">7.8分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2026-01-27', 'B', 18, 7.8)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2026-01-27')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-20</td>
+                                <td>策略B（平衡型）</td>
+                                <td>22只</td>
+                                <td><span class="score score-good">7.5分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2026-01-20', 'B', 22, 7.5)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2026-01-20')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-13</td>
+                                <td>策略A（稳健型）</td>
+                                <td>15只</td>
+                                <td><span class="score score-excellent">8.2分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2026-01-13', 'A', 15, 8.2)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2026-01-13')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2026-01-06</td>
+                                <td>策略B（平衡型）</td>
+                                <td>20只</td>
+                                <td><span class="score score-good">7.6分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2026-01-06', 'B', 20, 7.6)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2026-01-06')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-30</td>
+                                <td>策略B（平衡型）</td>
+                                <td>25只</td>
+                                <td><span class="score score-good">7.3分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-12-30', 'B', 25, 7.3)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-12-30')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-23</td>
+                                <td>策略A（稳健型）</td>
+                                <td>12只</td>
+                                <td><span class="score score-excellent">8.5分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-12-23', 'A', 12, 8.5)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-12-23')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-16</td>
+                                <td>策略B（平衡型）</td>
+                                <td>19只</td>
+                                <td><span class="score score-good">7.4分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-12-16', 'B', 19, 7.4)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-12-16')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-09</td>
+                                <td>策略C（成长型）</td>
+                                <td>28只</td>
+                                <td><span class="score score-average">6.9分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-12-09', 'C', 28, 6.9)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-12-09')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-12-02</td>
+                                <td>策略B（平衡型）</td>
+                                <td>21只</td>
+                                <td><span class="score score-good">7.7分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-12-02', 'B', 21, 7.7)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-12-02')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-11-25</td>
+                                <td>策略A（稳健型）</td>
+                                <td>14只</td>
+                                <td><span class="score score-good">7.9分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-11-25', 'A', 14, 7.9)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-11-25')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-11-18</td>
+                                <td>策略B（平衡型）</td>
+                                <td>23只</td>
+                                <td><span class="score score-good">7.2分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-11-18', 'B', 23, 7.2)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-11-18')">验证</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2025-11-11</td>
+                                <td>策略B（平衡型）</td>
+                                <td>20只</td>
+                                <td><span class="score score-good">7.5分</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary" onclick="viewHistoryDetail('2025-11-11', 'B', 20, 7.5)">查看详情</button>
+                                    <button class="btn btn-sm btn-secondary" onclick="verifyResult('2025-11-11')">验证</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination">
+                    <button disabled>&lt;</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>&gt;</button>
+                </div>
+
+                <!-- 说明 -->
+                <div class="tip-box mt-3">
+                    💡 验证功能说明：<br>
+                    • 点击[验证]可查看该次筛选股票的后续表现<br>
+                    • 系统会计算从筛选日至今的收益率<br>
+                    • 帮助判断筛选策略的有效性
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 验证详情弹窗 -->
+    <div id="verifyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background-color: white; border-radius: 8px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 24px;">
+            <div class="d-flex justify-between align-center mb-3">
+                <div class="card-header" style="margin-bottom: 0;">筛选验证报告</div>
+                <button class="btn btn-sm btn-outline" onclick="closeVerifyModal()">关闭</button>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <div class="info-label">筛选日期</div>
+                    <div class="info-value" id="modalDate">2026-01-27</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="info-label">当前日期</div>
+                    <div class="info-value" id="modalCurrentDate">2026-01-27（已过0天）</div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="info-label">使用策略</div>
+                    <div class="info-value" id="modalStrategy">策略B（平衡型）</div>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+
+                <h4 class="mb-2">📊 整体表现</h4>
+                <div class="info-grid mb-3">
+                    <div class="info-item">
+                        <span class="info-label">筛选数量</span>
+                        <span class="info-value" id="modalCount">18只股票</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">平均涨幅</span>
+                        <span class="info-value text-success" id="modalAvgGain">+3.2%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">沪深300涨幅</span>
+                        <span class="info-value" id="modalBenchmark">+2.1%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">超额收益</span>
+                        <span class="info-value text-success" id="modalExcess">+1.1% ✓</span>
+                    </div>
+                </div>
+
+                <h4 class="mb-2">📈 涨跌分布</h4>
+                <ul class="mb-3">
+                    <li>上涨：<span class="text-success">15只（83.3%）</span></li>
+                    <li>下跌：<span class="text-danger">3只（16.7%）</span></li>
+                    <li>最大涨幅：<span class="text-success">+8.5%（贵州茅台）</span></li>
+                    <li>最大跌幅：<span class="text-danger">-2.3%（某股票）</span></li>
+                </ul>
+
+                <h4 class="mb-2">🏆 表现最好前3名</h4>
+                <ol class="mb-3">
+                    <li>贵州茅台（600519）：<span class="text-success">+8.5%</span></li>
+                    <li>五粮液（000858）：<span class="text-success">+6.2%</span></li>
+                    <li>招商银行（600036）：<span class="text-success">+5.1%</span></li>
+                </ol>
+
+                <div class="tip-box">
+                    💡 <strong>结论</strong>：<br>
+                    该次筛选整体跑赢大盘，策略有效，建议继续使用。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 筛选历史记录
+        function filterHistory() {
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            alert('筛选日期范围：' + startDate + ' 至 ' + endDate + '\n\n（这是一个demo，实际应用中会根据日期筛选数据）');
+        }
+
+        // 查看历史详情
+        function viewHistoryDetail(date, strategy, count, score) {
+            alert('查看详情\n\n日期：' + date + '\n策略：' + strategy + '\n筛选数量：' + count + '只\n平均评分：' + score + '分\n\n（这是一个demo，实际应用中会跳转到详情页面）');
+        }
+
+        // 验证结果
+        function verifyResult(date) {
+            // 更新弹窗内容
+            document.getElementById('modalDate').textContent = date;
+            document.getElementById('modalCurrentDate').textContent = '2026-01-27（已过' + calculateDaysDiff(date) + '天）';
+
+            // 显示弹窗
+            document.getElementById('verifyModal').style.display = 'flex';
+        }
+
+        // 关闭验证弹窗
+        function closeVerifyModal() {
+            document.getElementById('verifyModal').style.display = 'none';
+        }
+
+        // 计算日期差（天数）
+        function calculateDaysDiff(dateStr) {
+            const date1 = new Date(dateStr);
+            const date2 = new Date('2026-01-27');
+            const diffTime = Math.abs(date2 - date1);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        // 点击弹窗背景关闭
+        document.getElementById('verifyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVerifyModal();
+            }
+        });
+    </script>
+</body>
+</html>

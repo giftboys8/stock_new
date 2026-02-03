@@ -1,0 +1,504 @@
+/**
+ * 中国山水画装饰元素库
+ * 使用纯CSS和SVG绘制传统元素
+ */
+
+/* ==================== 山峦 ==================== */
+
+/* 远山（淡墨、模糊） */
+.mountain-far {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.mountain-far::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path d="M0 200 L0 120 Q180 80 360 100 T720 80 T1080 110 T1440 90 L1440 200 Z" fill="%232d5a3d"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+    filter: blur(2px);
+}
+
+[data-theme="dark"] .mountain-far::before {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200"><path d="M0 200 L0 120 Q180 80 360 100 T720 80 T1080 110 T1440 90 L1440 200 Z" fill="%237fb069"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/* 中山（中墨） */
+.mountain-medium {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.mountain-medium::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150"><path d="M0 150 L0 80 Q240 40 480 70 T960 50 T1440 80 L1440 150 Z" fill="%232d5a3d"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+[data-theme="dark"] .mountain-medium::before {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150"><path d="M0 150 L0 80 Q240 40 480 70 T960 50 T1440 80 L1440 150 Z" fill="%237fb069"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/* 近山（浓墨、清晰） */
+.mountain-near {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.mountain-near::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path d="M0 100 L0 50 Q300 20 600 40 T1200 30 T1440 60 L1440 100 Z" fill="%232d5a3d"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+[data-theme="dark"] .mountain-near::before {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path d="M0 100 L0 50 Q300 20 600 40 T1200 30 T1440 60 L1440 100 Z" fill="%237fb069"/></svg>');
+    background-size: cover;
+    background-position: center bottom;
+}
+
+/* ==================== 水纹 ==================== */
+
+.water-ripple {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.water-ripple::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        180deg,
+        transparent,
+        transparent 8px,
+        var(--accent-color) 8px,
+        var(--accent-color) 10px
+    );
+    mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+}
+
+/* ==================== 竹子 ==================== */
+
+/* 竹叶装饰 */
+.bamboo-leaf {
+    position: absolute;
+    width: 40px;
+    height: 8px;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.bamboo-leaf::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+    transform: rotate(-30deg);
+}
+
+/* 竹叶 - 左上 */
+.bamboo-leaf.top-left {
+    top: 20px;
+    left: 20px;
+    transform: rotate(45deg);
+}
+
+/* 竹叶 - 右下 */
+.bamboo-leaf.bottom-right {
+    bottom: 100px;
+    right: 30px;
+    transform: rotate(-45deg);
+}
+
+/* 竹子装饰容器 */
+.bamboo-decoration {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bamboo-decoration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg,
+        transparent 0%,
+        var(--accent-color) 10%,
+        var(--accent-color) 90%,
+        transparent 100%
+    );
+}
+
+/* 竹节 */
+.bamboo-decoration::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: 15px;
+    width: 13px;
+    height: 2px;
+    background: var(--accent-color);
+    box-shadow:
+        0 100px 0 var(--accent-color),
+        0 200px 0 var(--accent-color),
+        0 300px 0 var(--accent-color);
+}
+
+/* ==================== 大雁（飞鸟）==================== */
+
+/* 飞鸟装饰 */
+.bird {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.bird::before,
+.bird::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 3px;
+    background: var(--text-primary);
+    border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+}
+
+.bird::before {
+    left: 0;
+    transform: rotate(30deg);
+}
+
+.bird::after {
+    right: 0;
+    transform: rotate(-30deg);
+}
+
+/* 飞鸟位置 */
+.bird-1 {
+    top: 15%;
+    left: 20%;
+    transform: scale(0.8);
+}
+
+.bird-2 {
+    top: 18%;
+    left: 25%;
+    transform: scale(0.6);
+}
+
+.bird-3 {
+    top: 12%;
+    right: 30%;
+    transform: scale(0.7);
+}
+
+/* ==================== 菊花 ==================== */
+
+.chrysanthemum {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.chrysanthemum::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle,
+        var(--highlight) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 菊花瓣（简化版） */
+.chrysanthemum-petals {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: var(--highlight);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 3px var(--highlight),
+        10px 0 0 2px var(--highlight),
+        -10px 0 0 2px var(--highlight),
+        0 10px 0 2px var(--highlight),
+        0 -10px 0 2px var(--highlight),
+        7px 7px 0 2px var(--highlight),
+        -7px 7px 0 2px var(--highlight),
+        7px -7px 0 2px var(--highlight),
+        -7px -7px 0 2px var(--highlight);
+    transform: translate(-50%, -50%);
+}
+
+/* ==================== 兰花 ==================== */
+
+.orchid {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.orchid::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 20px;
+    background: var(--accent-color);
+    transform: translateX(-50%);
+}
+
+.orchid::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 15px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translateX(-50%) rotate(30deg);
+    box-shadow:
+        -8px 5px 0 var(--accent-color),
+        8px 5px 0 var(--accent-color);
+}
+
+/* ==================== 松树 ==================== */
+
+.pine {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* 松树干 */
+.pine::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    height: 30px;
+    background: var(--text-tertiary);
+    transform: translateX(-50%);
+}
+
+/* 松树冠（层叠三角形） */
+.pine::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 30px solid var(--accent-color);
+    transform: translateX(-50%);
+}
+
+/* ==================== 组合场景 ==================== */
+
+/* 场景1：山水背景（用于页面底部） */
+.landscape-scene {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.landscape-scene .mountain-far,
+.landscape-scene .mountain-medium,
+.landscape-scene .mountain-near,
+.landscape-scene .water-ripple {
+    position: absolute;
+}
+
+/* 场景2：竹石（用于页面右侧） */
+.bamboo-scene {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* 场景3：飞鸟（用于页面上方） */
+.bird-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 场景4：花草点缀（用于卡片角落） */
+.flower-decoration {
+    position: relative;
+    overflow: hidden;
+}
+
+.flower-decoration .orchid {
+    bottom: 10px;
+    right: 10px;
+}
+
+.flower-decoration .chrysanthemum {
+    bottom: 10px;
+    left: 10px;
+}
+
+/* ==================== 响应式 ==================== */
+
+@media (max-width: 768px) {
+    .landscape-scene {
+        height: 150px;
+    }
+
+    .bamboo-scene {
+        width: 40px;
+    }
+
+    .bird-scene {
+        height: 100px;
+    }
+
+    .bird-1,
+    .bird-2,
+    .bird-3 {
+        transform: scale(0.5);
+    }
+
+    /* 移动端减少装饰 */
+    .bamboo-decoration,
+    .bamboo-scene {
+        display: none;
+    }
+}
+
+/* ==================== 动画效果（可选）==================== */
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.bird {
+    animation: float 3s ease-in-out infinite;
+}
+
+.bird-2 {
+    animation-delay: 0.5s;
+}
+
+.bird-3 {
+    animation-delay: 1s;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+.bamboo-decoration {
+    animation: sway 4s ease-in-out infinite;
+    transform-origin: bottom center;
+}

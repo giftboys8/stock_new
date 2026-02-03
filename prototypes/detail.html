@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贵州茅台（600519） - 股票分析系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="screening.html" class="navbar-logo">
+                📈 股票分析系统
+            </a>
+            <div class="navbar-menu">
+                <a href="screening.html">首页</a>
+                <a href="results.html">选股结果</a>
+                <a href="history.html">历史记录</a>
+            </div>
+            <div class="navbar-user">
+                <span>欢迎，用户</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 返回按钮 -->
+        <button class="btn btn-outline mb-3" onclick="window.location.href='results.html'">← 返回列表</button>
+
+        <!-- 页面标题 -->
+        <div class="card-header">
+            贵州茅台（600519）
+        </div>
+
+        <!-- 基本信息 -->
+        <div class="card">
+            <div class="card-header">
+                📊 基本信息
+            </div>
+
+            <div class="card-body">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">当前股价</span>
+                        <span class="info-value">1650.00元</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">今日涨幅</span>
+                        <span class="info-value text-success">+2.3%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">成交额</span>
+                        <span class="info-value">12.5亿</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">PE</span>
+                        <span class="info-value">28.5</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">PB</span>
+                        <span class="info-value">12.3</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ROE</span>
+                        <span class="info-value text-success">31.2%</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">市值</span>
+                        <span class="info-value">2.1万亿</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">52周最高</span>
+                        <span class="info-value">1850.00元</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">52周最低</span>
+                        <span class="info-value">1420.00元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 综合评分 -->
+        <div class="score-banner">
+            <div class="score-main">
+                <div>
+                    <div class="info-label" style="color: rgba(255,255,255,0.8);">🎯 综合评分</div>
+                    <div class="score-number">8.5/10</div>
+                    <div class="score-stars">⭐⭐⭐⭐☆</div>
+                    <div style="margin-top: 8px; font-size: 16px;">🟢 优秀</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 16px; margin-bottom: 8px;">💡 AI建议：逢低买入</div>
+                    <div style="font-size: 14px; opacity: 0.9;">🎯 建议价格：1650-1700元</div>
+                </div>
+            </div>
+
+            <div class="score-details">
+                <div class="score-detail-item">
+                    <div class="info-label">📦 建议仓位</div>
+                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">25%</div>
+                </div>
+                <div class="score-detail-item">
+                    <div class="info-label">🛑 止损价</div>
+                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">1485元</div>
+                </div>
+                <div class="score-detail-item">
+                    <div class="info-label">🎯 止盈价</div>
+                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">1820元</div>
+                </div>
+                <div class="score-detail-item">
+                    <div class="info-label">📅 持有周期</div>
+                    <div style="font-size: 20px; font-weight: bold; margin-top: 4px;">6-12个月</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- D. 宏观与事件分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('macro')">
+                <div class="analysis-title">
+                    📈 D. 宏观与事件分析
+                </div>
+                <div class="analysis-score">
+                    评分：9/10
+                    <span class="score-badge green">🟢</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="macro">
+                <h4 class="mb-2">【当前宏观环境】</h4>
+                <ul class="mb-3">
+                    <li>GDP增速：5.2%（Q4 2025），消费复苏明显</li>
+                    <li>货币政策：稳健中性，流动性合理充裕</li>
+                    <li>通胀水平：CPI 2.1%，温和通胀</li>
+                </ul>
+
+                <h4 class="mb-2">【相关重大事件】</h4>
+                <p class="mb-2">✓ <strong>正面事件：</strong></p>
+                <ul class="mb-3">
+                    <li>消费刺激政策出台（2025-12-15）</li>
+                    <li>• 降低白酒消费税可能性讨论</li>
+                    <li>• 预计影响：提升白酒行业利润率5-8%</li>
+                </ul>
+
+                <p class="mb-2">⚠️ <strong>潜在风险：</strong></p>
+                <ul class="mb-3">
+                    <li>经济下行压力（消费降级风险）</li>
+                    <li>• 影响：高端白酒需求可能下降</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    当前宏观环境对白酒行业整体友好，无重大利空。消费复苏和政策支持对茅台形成利好。建议关注经济数据变化。
+                </div>
+            </div>
+        </div>
+
+        <!-- C. 行业数据分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('industry')">
+                <div class="analysis-title">
+                    🏭 C. 行业数据分析
+                </div>
+                <div class="analysis-score">
+                    评分：9/10
+                    <span class="score-badge green">🟢</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="industry">
+                <h4 class="mb-2">【白酒行业概况】</h4>
+                <ul class="mb-3">
+                    <li>行业PE：35.2（历史分位：28%，偏低估值）</li>
+                    <li>行业ROE：22.5%（高于全市场平均10%）</li>
+                    <li>近3月涨跌：+8.3%（跑赢沪深300的+5.2%）</li>
+                </ul>
+
+                <h4 class="mb-2">【竞争格局】</h4>
+                <p class="mb-2">行业排名：No.1（市值占比35%）</p>
+                <p class="mb-3">主要竞争对手：</p>
+                <ul class="mb-3">
+                    <li>五粮液（000858）：市值1.2万亿，ROE 28.5%</li>
+                    <li>泸州老窖（000568）：市值3000亿，ROE 26.1%</li>
+                </ul>
+
+                <h4 class="mb-2">【行业趋势】</h4>
+                <ul class="mb-3">
+                    <li>✓ 量减价增：高端白酒供不应求，提价空间大</li>
+                    <li>✓ 集中度提升：小品牌退出，龙头受益</li>
+                    <li>✓ 渠道改革：直营比例提升，利润率改善</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    白酒行业处于景气周期，估值合理偏低，行业龙头茅台将最大程度受益于行业集中度提升。
+                </div>
+            </div>
+        </div>
+
+        <!-- B. 财务数据分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('financial')">
+                <div class="analysis-title">
+                    💰 B. 财务数据分析
+                </div>
+                <div class="analysis-score">
+                    评分：9/10
+                    <span class="score-badge green">🟢</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="financial">
+                <h4 class="mb-2">【盈利能力】</h4>
+                <div class="table-container mb-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>茅台</th>
+                                <th>行业平均</th>
+                                <th>评价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ROE</td>
+                                <td class="text-success">31.2%</td>
+                                <td>22.5%</td>
+                                <td>⭐⭐⭐⭐⭐ 远超行业</td>
+                            </tr>
+                            <tr>
+                                <td>毛利率</td>
+                                <td class="text-success">91.2%</td>
+                                <td>75.3%</td>
+                                <td>⭐⭐⭐⭐⭐ 极高</td>
+                            </tr>
+                            <tr>
+                                <td>净利率</td>
+                                <td class="text-success">52.3%</td>
+                                <td>28.6%</td>
+                                <td>⭐⭐⭐⭐⭐ 极高</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="mb-2">【成长能力】</h4>
+                <div class="table-container mb-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>指标</th>
+                                <th>2023</th>
+                                <th>2024</th>
+                                <th>2025E</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>营收增长率</td>
+                                <td>15.3%</td>
+                                <td class="text-success">18.2%</td>
+                                <td>16.5%（预测）</td>
+                            </tr>
+                            <tr>
+                                <td>净利润增长率</td>
+                                <td>17.8%</td>
+                                <td class="text-success">19.5%</td>
+                                <td>17.2%（预测）</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4 class="mb-2">【财务健康】</h4>
+                <ul class="mb-3">
+                    <li>资产负债率：18.5%（行业平均：35%）⭐⭐⭐⭐⭐ 极低</li>
+                    <li>流动比率：8.2（行业平均：2.5）⭐⭐⭐⭐⭐ 极高</li>
+                    <li>现金流：经营性现金流净额520亿（+12.3%）</li>
+                </ul>
+
+                <h4 class="mb-2">【估值水平】</h4>
+                <ul class="mb-3">
+                    <li>当前PE：28.5（历史5年中位数：32）</li>
+                    <li>PE分位：42%（历史估值处于偏低位置）</li>
+                    <li>PB：12.3（历史5年中位数：14.5）</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    茅台财务数据极其优秀：ROE 31.2%远超行业，毛利率91.2%极高，负债率仅18.5%，现金流充沛。当前估值处于历史偏低位置，具备投资价值。
+                </div>
+            </div>
+        </div>
+
+        <!-- A. 技术分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('technical')">
+                <div class="analysis-title">
+                    📉 A. 技术分析
+                </div>
+                <div class="analysis-score">
+                    评分：7/10
+                    <span class="score-badge yellow">🟡</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="technical">
+                <h4 class="mb-2">【价格位置】</h4>
+                <p class="mb-2">当前价格：1650元</p>
+                <ul class="mb-3">
+                    <li>支撑位1：1580元（MA100，强支撑）</li>
+                    <li>支撑位2：1500元（前期低点）</li>
+                    <li>压力位1：1750元（MA20）</li>
+                    <li>压力位2：1850元（52周高点）</li>
+                </ul>
+
+                <h4 class="mb-2">【趋势判断】</h4>
+                <ul class="mb-3">
+                    <li>MA20（1678） > MA60（1652） > MA100（1620）：上升趋势 ✓</li>
+                    <li>当前股价在MA100附近，处于合理买入区</li>
+                    <li>成交量：近期温和放量，资金流入迹象</li>
+                </ul>
+
+                <h4 class="mb-2">【买卖信号】</h4>
+                <ul class="mb-3">
+                    <li>MACD：金叉，多头信号 ✓</li>
+                    <li>RSI：52（中性区间，不超买也不超卖）</li>
+                    <li>布林带：接近中轨，震荡偏多</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    技术面显示股票处于上升趋势，当前价格接近长期支撑位（MA100），是较好的买入时机。建议在1650-1700元区间分批建仓。
+                </div>
+            </div>
+        </div>
+
+        <!-- E. 情绪面分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('sentiment')">
+                <div class="analysis-title">
+                    😊 E. 情绪面分析
+                </div>
+                <div class="analysis-score">
+                    评分：6/10
+                    <span class="score-badge yellow">🟡</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="sentiment">
+                <h4 class="mb-2">【市场情绪】</h4>
+                <ul class="mb-3">
+                    <li>全市场换手率：2.1%（正常范围1-2%）⚠️ 略微偏热</li>
+                    <li>融资融券余额：1.52万亿（环比+2.3%）</li>
+                    <li>北向资金净流入：+20亿元（连续3日净流入）✓</li>
+                </ul>
+
+                <h4 class="mb-2">【情绪趋势】（近5日/10日）</h4>
+                <ul class="mb-3">
+                    <li>今日：6/10分</li>
+                    <li>近5日平均：5.8/10分（情绪稳定）</li>
+                    <li>近10日平均：6.2/10分（略有下降）</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    当前市场情绪正常，北向资金连续流入，融资余额温和增长，说明市场信心稳定。换手率略高但未过热，适合正常投资。
+                </div>
+            </div>
+        </div>
+
+        <!-- F. 资金面分析 -->
+        <div class="card">
+            <div class="analysis-header" onclick="toggleSection('capital')">
+                <div class="analysis-title">
+                    💵 F. 资金面分析
+                </div>
+                <div class="analysis-score">
+                    评分：7/10
+                    <span class="score-badge green">🟢</span>
+                </div>
+            </div>
+
+            <div class="analysis-content" id="capital">
+                <h4 class="mb-2">【资金流向】</h4>
+                <ul class="mb-3">
+                    <li>北向资金：+20亿元（今日）</li>
+                    <li>• 近5日累计：+85亿元 ✓</li>
+                    <li>• 近10日累计：+120亿元 ✓</li>
+                    <li>主力资金：+5亿元（今日）</li>
+                    <li>散户资金：-8亿元（今日）</li>
+                </ul>
+
+                <h4 class="mb-2">【持仓变化】</h4>
+                <ul class="mb-3">
+                    <li>北向持仓：8.5%（环比+0.3%）</li>
+                    <li>基金持仓：12.3%（环比+1.2%）</li>
+                    <li>机构持仓：35.6%（环比+0.8%）</li>
+                </ul>
+
+                <h4 class="mb-2">【资金趋势】</h4>
+                <ul class="mb-3">
+                    <li>今日：7/10分 ✓</li>
+                    <li>近5日趋势：持续流入</li>
+                    <li>近10日趋势：持续流入</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>【AI分析】</strong><br>
+                    资金面良好，北向资金连续10日净流入，机构持续增持，说明专业投资者看好。主力资金流入，散户流出，是健康的资金结构（主力吸筹，散户交出筹码）。
+                </div>
+            </div>
+        </div>
+
+        <!-- AI综合建议 -->
+        <div class="card">
+            <div class="card-header">
+                🤖 AI综合建议
+            </div>
+
+            <div class="card-body">
+                <h4 class="mb-2">【推荐理由】</h4>
+                <ol class="mb-3">
+                    <li>基本面极其优秀：ROE 31.2%，毛利率91.2%，现金流充沛</li>
+                    <li>估值合理：当前PE 28.5处于历史42%分位，偏低</li>
+                    <li>行业景气：白酒行业集中度提升，龙头受益</li>
+                    <li>技术面良好：处于上升趋势，接近支撑位</li>
+                    <li>资金面支持：北向资金连续流入，机构增持</li>
+                </ol>
+
+                <h4 class="mb-2">【操作建议】</h4>
+                <ul class="mb-3">
+                    <li>建议操作：逢低买入</li>
+                    <li>建议价格：1650-1700元（分2-3次建仓）</li>
+                    <li>建议仓位：25%（如果持有4只股票）</li>
+                </ul>
+
+                <h4 class="mb-2">【止盈止损计划】</h4>
+                <ul class="mb-3">
+                    <li>第一止盈位：1820元（+10%），卖出20%</li>
+                    <li>第二止盈位：1950元（+20%），再卖出30%</li>
+                    <li>第三止盈位：2145元（+30%），再卖出30%</li>
+                    <li>清仓位：2475元（+50%），全部卖出</li>
+                    <li>止损位：1485元（-10%），坚决清仓</li>
+                </ul>
+
+                <div class="tip-box warning">
+                    <strong>【风险提示】</strong><br>
+                    ⚠️ 主要风险：<br>
+                    1. 经济下行导致消费降级，高端白酒需求下降<br>
+                    2. 行业政策变化（如消费税上调）<br>
+                    3. 股价已从低点反弹+15%，短期有回调压力
+                </div>
+
+                <div class="info-grid mt-3">
+                    <div class="info-item">
+                        <span class="info-label">建议持有周期</span>
+                        <span class="info-value">6-12个月</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">预期收益</span>
+                        <span class="info-value text-success">15-25%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 返回按钮 -->
+        <div class="text-center">
+            <button class="btn btn-primary" onclick="window.location.href='results.html'">返回列表</button>
+        </div>
+    </div>
+
+    <script>
+        // 切换分析部分展开/折叠
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const header = section.previousElementSibling;
+
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                header.querySelector('.analysis-title').style.color = '#1e293b';
+            } else {
+                section.style.display = 'none';
+                header.querySelector('.analysis-title').style.color = '#64748b';
+            }
+        }
+
+        // 初始化：默认全部展开
+        document.addEventListener('DOMContentLoaded', function() {
+            // 所有分析部分默认显示
+        });
+    </script>
+</body>
+</html>

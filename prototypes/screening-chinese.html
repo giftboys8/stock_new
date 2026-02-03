@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票分析系统 - 漏斗选股配置</title>
+    <link rel="stylesheet" href="css/chinese-style.css">
+    <style>
+        /* 额外的装饰元素 */
+        .chinese-seal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--accent-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--accent-color);
+            writing-mode: vertical-rl;
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+            font-family: "STKaiti", "KaiTi", serif;
+        }
+
+        .page-intro {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background: var(--bg-card);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .page-intro h1 {
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            letter-spacing: 8px;
+        }
+
+        .page-intro p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .verse {
+            font-family: "STKaiti", "KaiTi", serif;
+            font-size: 18px;
+            color: var(--accent-color);
+            margin: 20px 0;
+            letter-spacing: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 装饰印章 -->
+    <div class="chinese-seal">股票分析</div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="screening-chinese.html" class="navbar-logo">
+                📊 股票分析系统
+            </a>
+            <div class="navbar-menu">
+                <a href="screening-chinese.html" class="active">首页</a>
+                <a href="results.html">选股结果</a>
+                <a href="history.html">历史记录</a>
+            </div>
+            <div class="navbar-right">
+                <div class="navbar-user">
+                    <span>欢迎，客官</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 页面引言 -->
+        <div class="page-intro">
+            <h1>漏斗选股</h1>
+            <div class="verse">抽丝剥茧寻良骥，沙里淘金得如意</div>
+            <p>
+                借助AI之力，从五千只股票中筛选出真正的优质标的<br>
+                以价值投资为本，辅以技术分析，助您稳健投资
+            </p>
+        </div>
+
+        <!-- 第一步：选择筛选策略 -->
+        <div class="card">
+            <div class="card-header">
+                壹 · 选择筛选策略
+            </div>
+
+            <div class="card-body">
+                <!-- 策略A：稳健型 -->
+                <div class="strategy-card" onclick="selectStrategy('A', this)">
+                    <div class="strategy-title">
+                        <input type="radio" name="strategy" value="A">
+                        策略A：稳健型（适合熊市）
+                    </div>
+                    <div class="strategy-desc">
+                        • 严格筛选：PE 15-30，ROE >20%<br>
+                        • 预计筛选：约50-80只股票<br>
+                        • 适用场景：市场环境不佳，追求防守
+                    </div>
+                </div>
+
+                <!-- 策略B：平衡型（推荐） -->
+                <div class="strategy-card selected" onclick="selectStrategy('B', this)">
+                    <div class="strategy-title">
+                        <input type="radio" name="strategy" value="B" checked>
+                        策略B：平衡型（适合震荡市）
+                        <span class="strategy-badge">推荐</span>
+                    </div>
+                    <div class="strategy-desc">
+                        • 适中筛选：PE 10-40，ROE >15%<br>
+                        • 预计筛选：约80-150只股票<br>
+                        • 适用场景：市场震荡，均衡配置
+                    </div>
+                </div>
+
+                <!-- 策略C：成长型 -->
+                <div class="strategy-card" onclick="selectStrategy('C', this)">
+                    <div class="strategy-title">
+                        <input type="radio" name="strategy" value="C">
+                        策略C：成长型（适合牛市）
+                    </div>
+                    <div class="strategy-desc">
+                        • 宽松筛选：PE 0-50，ROE >10%<br>
+                        • 预计筛选：约150-250只股票<br>
+                        • 适用场景：市场向好，追求进攻
+                    </div>
+                </div>
+
+                <!-- 提示信息 -->
+                <div class="tip-box mt-3">
+                    💡 提示：系统当前市场环境为【震荡市】，推荐使用策略B
+                </div>
+            </div>
+        </div>
+
+        <!-- 第二步：微调筛选条件（可选） -->
+        <div class="card">
+            <div class="card-header">
+                贰 · 微调筛选条件（可选）
+            </div>
+
+            <div class="card-body">
+                <!-- 展开/收起按钮 -->
+                <div class="advanced-toggle" onclick="toggleAdvanced()">
+                    <span id="advancedIcon">▶</span>
+                    <span>展开/收起 高级设置</span>
+                </div>
+
+                <!-- 高级设置区域 -->
+                <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                    <!-- 市值要求 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>市值要求</span>
+                            <span>> <strong id="marketCapValue">50</strong> 亿</span>
+                        </div>
+                        <input type="range" class="slider" min="10" max="200" value="50" id="marketCap" oninput="updateSlider('marketCap', 'marketCapValue')">
+                    </div>
+
+                    <!-- PE范围 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>PE范围</span>
+                            <span><strong id="peMinValue">10</strong> - <strong id="peMaxValue">40</strong></span>
+                        </div>
+                        <input type="range" class="slider" min="0" max="100" value="10" id="peMin" oninput="updateSlider('peMin', 'peMinValue')">
+                        <input type="range" class="slider" min="0" max="100" value="40" id="peMax" oninput="updateSlider('peMax', 'peMaxValue')" class="mt-1">
+                    </div>
+
+                    <!-- ROE要求 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>ROE要求</span>
+                            <span>> <strong id="roeValue">15</strong>%</span>
+                        </div>
+                        <input type="range" class="slider" min="0" max="50" value="15" id="roe" oninput="updateSlider('roe', 'roeValue')">
+                    </div>
+
+                    <!-- 换手率 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>换手率</span>
+                            <span><strong id="turnoverMinValue">3</strong>% - <strong id="turnoverMaxValue">15</strong>%</span>
+                        </div>
+                        <input type="range" class="slider" min="0" max="30" value="3" id="turnoverMin" oninput="updateSlider('turnoverMin', 'turnoverMinValue')">
+                        <input type="range" class="slider" min="0" max="30" value="15" id="turnoverMax" oninput="updateSlider('turnoverMax', 'turnoverMaxValue')" class="mt-1">
+                    </div>
+
+                    <!-- 股价 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>股价</span>
+                            <span>> <strong id="priceValue">8</strong> 元</span>
+                        </div>
+                        <input type="range" class="slider" min="0" max="100" value="8" id="price" oninput="updateSlider('price', 'priceValue')">
+                    </div>
+
+                    <!-- 日均成交额 -->
+                    <div class="form-group">
+                        <div class="slider-label">
+                            <span>日均成交额</span>
+                            <span>> <strong id="amountValue">3000</strong> 万元</span>
+                        </div>
+                        <input type="range" class="slider" min="1000" max="10000" value="3000" step="500" id="amount" oninput="updateSlider('amount', 'amountValue')">
+                    </div>
+
+                    <!-- 操作按钮 -->
+                    <div class="d-flex gap-3 mt-3">
+                        <button class="btn btn-outline" onclick="resetSettings()">恢复默认</button>
+                        <button class="btn btn-primary" onclick="saveSettings()">保存配置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 第三步：开始筛选 -->
+        <div class="card">
+            <div class="card-header">
+                叁 · 开始筛选
+            </div>
+
+            <div class="card-body text-center">
+                <button class="btn btn-primary" style="font-size: 18px; padding: 16px 48px;" onclick="startScreening()">
+                    开始筛选
+                </button>
+
+                <p class="mt-3" style="color: var(--text-tertiary);">
+                    预计耗时：约2-3分钟（需要获取全市场数据并分析）
+                </p>
+            </div>
+        </div>
+
+        <!-- 底部诗词 -->
+        <div style="text-align: center; margin-top: 60px; padding: 40px 0; color: var(--text-tertiary);">
+            <div style="font-family: 'STKaiti', 'KaiTi', serif; font-size: 16px; line-height: 2.5;">
+                投资有风险，入市需谨慎<br>
+                本系统仅供参考，不构成投资建议
+            </div>
+        </div>
+    </div>
+
+    <!-- 主题切换脚本 -->
+    <script src="js/theme.js"></script>
+
+    <script>
+        // 选择策略
+        function selectStrategy(strategy, element) {
+            // 移除所有选中状态
+            document.querySelectorAll('.strategy-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            // 添加选中状态
+            element.classList.add('selected');
+
+            // 选中对应的单选框
+            element.querySelector('input[type="radio"]').checked = true;
+        }
+
+        // 展开/收起高级设置
+        function toggleAdvanced() {
+            const settings = document.getElementById('advancedSettings');
+            const icon = document.getElementById('advancedIcon');
+
+            if (settings.style.display === 'none') {
+                settings.style.display = 'block';
+                icon.textContent = '▼';
+            } else {
+                settings.style.display = 'none';
+                icon.textContent = '▶';
+            }
+        }
+
+        // 更新滑块值
+        function updateSlider(sliderId, valueId) {
+            const slider = document.getElementById(sliderId);
+            const valueDisplay = document.getElementById(valueId);
+            valueDisplay.textContent = slider.value;
+        }
+
+        // 恢复默认设置
+        function resetSettings() {
+            document.getElementById('marketCap').value = 50;
+            document.getElementById('marketCapValue').textContent = 50;
+
+            document.getElementById('peMin').value = 10;
+            document.getElementById('peMinValue').textContent = 10;
+            document.getElementById('peMax').value = 40;
+            document.getElementById('peMaxValue').textContent = 40;
+
+            document.getElementById('roe').value = 15;
+            document.getElementById('roeValue').textContent = 15;
+
+            document.getElementById('turnoverMin').value = 3;
+            document.getElementById('turnoverMinValue').textContent = 3;
+            document.getElementById('turnoverMax').value = 15;
+            document.getElementById('turnoverMaxValue').textContent = 15;
+
+            document.getElementById('price').value = 8;
+            document.getElementById('priceValue').textContent = 8;
+
+            document.getElementById('amount').value = 3000;
+            document.getElementById('amountValue').textContent = 3000;
+        }
+
+        // 保存配置
+        function saveSettings() {
+            alert('配置已保存！');
+        }
+
+        // 开始筛选
+        function startScreening() {
+            // 获取选中的策略
+            const strategy = document.querySelector('input[name="strategy"]:checked').value;
+            alert('开始筛选，使用策略' + strategy + '...\n\n（这是一个demo，实际应用中会跳转到结果页面）');
+            // 实际应用中会跳转到结果页面
+            // window.location.href = 'results.html';
+        }
+    </script>
+</body>
+</html>

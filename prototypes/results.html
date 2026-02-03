@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选股结果 - 股票分析系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="screening.html" class="navbar-logo">
+                📈 股票分析系统
+            </a>
+            <div class="navbar-menu">
+                <a href="screening.html">首页</a>
+                <a href="results.html" class="active">选股结果</a>
+                <a href="history.html">历史记录</a>
+            </div>
+            <div class="navbar-user">
+                <span>欢迎，用户</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <div class="container">
+        <!-- 页面标题 -->
+        <div class="d-flex justify-between align-center mb-3">
+            <div class="card-header">
+                选股结果
+            </div>
+            <div class="d-flex gap-3">
+                <button class="btn btn-secondary" onclick="window.location.href='screening.html'">重新筛选</button>
+                <button class="btn btn-primary" onclick="exportExcel()">导出Excel</button>
+            </div>
+        </div>
+
+        <!-- 筛选概览 -->
+        <div class="card">
+            <div class="card-header">
+                📊 筛选概览
+            </div>
+
+            <div class="card-body">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">筛选时间</span>
+                        <span class="info-value">2026-01-27 15:30</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">使用策略</span>
+                        <span class="info-value">策略B（平衡型）</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">筛选结果</span>
+                        <span class="info-value text-primary">18只股票</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">平均评分</span>
+                        <span class="info-value text-success">7.8分</span>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <span class="info-label">从5023只股票中筛选</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 排序方式 -->
+        <div class="card">
+            <div class="card-header">
+                📋 排序方式
+            </div>
+
+            <div class="card-body">
+                <div class="sort-controls">
+                    <button class="sort-btn active">评分降序 ▼</button>
+                    <button class="sort-btn">评分升序</button>
+                    <button class="sort-btn">股价</button>
+                    <button class="sort-btn">PE</button>
+                    <button class="sort-btn">ROE</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 选股结果表格 -->
+        <div class="card">
+            <div class="card-header">
+                📊 选股结果（共18只）
+            </div>
+
+            <div class="card-body">
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>股票代码</th>
+                                <th>股票名称</th>
+                                <th>股价（元）</th>
+                                <th>PE</th>
+                                <th>ROE</th>
+                                <th>评分</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>600519</td>
+                                <td>贵州茅台</td>
+                                <td>1650.00</td>
+                                <td>28.5</td>
+                                <td class="text-success">31.2%</td>
+                                <td><span class="score score-excellent">8.5</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600519')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>000858</td>
+                                <td>五粮液</td>
+                                <td>145.00</td>
+                                <td>20.3</td>
+                                <td class="text-success">28.5%</td>
+                                <td><span class="score score-excellent">8.8</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('000858')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>600036</td>
+                                <td>招商银行</td>
+                                <td>32.50</td>
+                                <td>8.2</td>
+                                <td class="text-success">16.8%</td>
+                                <td><span class="score score-excellent">8.5</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600036')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>002594</td>
+                                <td>比亚迪</td>
+                                <td>258.00</td>
+                                <td>25.6</td>
+                                <td class="text-success">18.2%</td>
+                                <td><span class="score score-good">7.9</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('002594')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>600276</td>
+                                <td>恒瑞医药</td>
+                                <td>48.50</td>
+                                <td>35.2</td>
+                                <td class="text-success">22.1%</td>
+                                <td><span class="score score-good">7.5</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600276')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>300750</td>
+                                <td>宁德时代</td>
+                                <td>185.00</td>
+                                <td>32.8</td>
+                                <td class="text-success">20.5%</td>
+                                <td><span class="score score-good">7.8</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('300750')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>601318</td>
+                                <td>中国平安</td>
+                                <td>45.20</td>
+                                <td>12.5</td>
+                                <td class="text-success">15.8%</td>
+                                <td><span class="score score-good">7.2</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('601318')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>000333</td>
+                                <td>美的集团</td>
+                                <td>62.80</td>
+                                <td>18.6</td>
+                                <td class="text-success">19.2%</td>
+                                <td><span class="score score-good">7.6</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('000333')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>600887</td>
+                                <td>伊利股份</td>
+                                <td>32.50</td>
+                                <td>22.3</td>
+                                <td class="text-success">17.5%</td>
+                                <td><span class="score score-good">7.4</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600887')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>002475</td>
+                                <td>立讯精密</td>
+                                <td>28.60</td>
+                                <td>28.5</td>
+                                <td class="text-success">21.3%</td>
+                                <td><span class="score score-good">7.3</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('002475')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>601012</td>
+                                <td>隆基绿能</td>
+                                <td>28.50</td>
+                                <td>18.2</td>
+                                <td class="text-success">16.8%</td>
+                                <td><span class="score score-average">6.8</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('601012')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>300059</td>
+                                <td>东方财富</td>
+                                <td>15.20</td>
+                                <td>25.6</td>
+                                <td class="text-success">14.2%</td>
+                                <td><span class="score score-average">6.5</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('300059')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>600690</td>
+                                <td>海尔智家</td>
+                                <td>25.80</td>
+                                <td>16.5</td>
+                                <td class="text-success">15.6%</td>
+                                <td><span class="score score-average">6.7</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600690')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>000651</td>
+                                <td>格力电器</td>
+                                <td>35.20</td>
+                                <td>14.8</td>
+                                <td class="text-success">16.2%</td>
+                                <td><span class="score score-average">6.9</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('000651')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>601888</td>
+                                <td>中国中免</td>
+                                <td>82.50</td>
+                                <td>30.5</td>
+                                <td class="text-success">13.8%</td>
+                                <td><span class="score score-average">6.3</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('601888')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>002304</td>
+                                <td>洋河股份</td>
+                                <td>125.00</td>
+                                <td>24.6</td>
+                                <td class="text-success">20.5%</td>
+                                <td><span class="score score-average">6.6</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('002304')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>600547</td>
+                                <td>山东黄金</td>
+                                <td>28.50</td>
+                                <td>22.8</td>
+                                <td class="text-success">12.5%</td>
+                                <td><span class="score score-average">6.2</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('600547')">详情</button></td>
+                            </tr>
+                            <tr>
+                                <td>000568</td>
+                                <td>泸州老窖</td>
+                                <td>195.00</td>
+                                <td>26.5</td>
+                                <td class="text-success">26.1%</td>
+                                <td><span class="score score-good">7.7</span></td>
+                                <td><button class="btn btn-sm btn-primary" onclick="viewDetail('000568')">详情</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination">
+                    <button disabled>&lt;</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>&gt;</button>
+                </div>
+
+                <!-- 说明 -->
+                <div class="tip-box mt-3">
+                    💡 说明：<br>
+                    • 点击[详情]查看完整分析报告<br>
+                    • 评分>8分为优质股票，建议优先考虑<br>
+                    • 可导出Excel进行模拟盘验证
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 查看详情
+        function viewDetail(stockCode) {
+            window.location.href = 'detail.html?code=' + stockCode;
+        }
+
+        // 导出Excel
+        function exportExcel() {
+            alert('正在导出Excel...\n\n（这是一个demo，实际应用中会生成并下载Excel文件）');
+        }
+
+        // 排序按钮点击
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 分页按钮点击
+        document.querySelectorAll('.pagination button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (!this.disabled) {
+                    document.querySelectorAll('.pagination button').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
