@@ -1,7 +1,4 @@
-version: '3.8'
-
 services:
-  # 后端服务
   backend:
     build: 
       context: ./backend
@@ -10,20 +7,17 @@ services:
     restart: always
     ports:
       - "8000:8000"
-    volumes:
-      # 使用命名卷以避免 macOS 目录权限问题
-      - stock_data:/app/data
-      - stock_logs:/app/logs
     environment:
-      # 将数据库指向数据卷目录
-      - DATABASE_URL=sqlite:////app/data/stock_analysis.db
+      - DATABASE_URL=sqlite:///./stock_analysis.db
       - API_HOST=0.0.0.0
       - API_PORT=8000
       - CORS_ORIGINS=*
+    volumes:
+      - ./backend/stock_analysis.db:/app/stock_analysis.db
+      - ./backend/logs:/app/logs
     networks:
       - stock-network
 
-  # 前端服务
   frontend:
     build: 
       context: ./stock-analysis
@@ -40,7 +34,3 @@ services:
 networks:
   stock-network:
     driver: bridge
-
-volumes:
-  stock_data:
-  stock_logs:

@@ -70,23 +70,38 @@ docker volume rm stock_stock_data
 
 ## 故障排查
 
-查看日志：
-```bash
-# 查看所有日志
-docker-compose logs -f
+### 常见问题：502 Bad Gateway
 
-# 查看后端日志
-docker-compose logs -f backend
+如果您在访问应用时遇到 `502 Bad Gateway` 错误，通常意味着：
 
-# 查看前端(Nginx)日志
-docker-compose logs -f frontend
-```
+1.  **后端服务未启动**：Nginx 无法连接到 `backend:8000`。
+2.  **外部网关问题**：如果您通过外部 Nginx (如端口 8080) 转发到 Docker 容器，可能是该转发连接失败。
 
-进入容器：
-```bash
-# 进入后端容器
-docker-compose exec backend bash
+**排查步骤**：
 
-# 进入前端容器
-docker-compose exec frontend sh
-```
+1.  **检查容器状态**
+    确保两个容器都处于 `Up` 状态：
+    ```bash
+    docker-compose ps
+    ```
+
+2.  **查看服务日志**
+    检查是否有报错信息（特别是后端数据库连接错误）：
+    ```bash
+    # 查看所有日志
+    docker-compose logs
+
+    # 专门查看后端日志
+    docker-compose logs backend
+    ```
+
+3.  **检查端口映射**
+    默认配置下，前端监听宿主机的 **80** 端口。如果您访问的是 8080 端口，请检查：
+    - 您是否修改了 `docker-compose.yml` 中的端口映射？
+    - 或者您是否有另一个反向代理服务在 8080 端口运行？
+
+4.  **进入容器排查**
+    您可以进入 Nginx 容器测试对后端的连通性：
+    ```bash
+    docker-compose exec frontend ping backend
+    ```
